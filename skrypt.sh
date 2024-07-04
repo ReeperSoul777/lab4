@@ -1,34 +1,37 @@
 #!/bin/bash
-function dzis(){
-echo "Dzisiejsza data: $(date '+%Y-%m-%d')"
+
+function dzis() {
+  echo "Dzisiejsza data: $(date '+%Y-%m-%d')"
 }
-function logi(){
-  liczba=$1	
-	for i in $(seq 1 $liczba); do
-    		file_name="log${i}.txt"
-    		echo -e "Nazwa pliku: $file_name\nNazwa skryptu: $(basename "$0")\nData utworzenia: $(date '+%Y-%m-%d')" > "$file_name"
- 	done
+
+function logi() {
+  liczba=$1
+  for i in $(seq 1 $liczba); do
+    file_name="log${i}.txt"
+    echo -e "Nazwa pliku: $file_name\nNazwa skryptu: $(basename "$0")\nData utworzenia: $(date '+%Y-%m-%d')" > "$file_name"
+  done
 }
+
 function help() {
-  echo "Użycie: -- [OPCJE]"
+  echo "Użycie: $0 [OPCJE]"
   echo "Opcje:"
-  echo "  --date			Wyświetla dzisiejszą datę."
-  echo "  --logs			Tworzy 100 plików log."
-  echo "  --logs [liczba]   	Tworzy określoną liczbę plików log."
-  echo "  --help			Wyświetla tę pomoc."
+  echo "  --date, -d            Wyświetla dzisiejszą datę."
+  echo "  --logs, -l [liczba]   Tworzy określoną liczbę plików log. Domyślnie tworzy 100 plików."
+  echo "  --help, -h            Wyświetla tę pomoc."
 }
-
-
 
 case "$1" in
---help) help;;
---date) dzis;;
---logs)
-    if [ -z "$2" ]; then
-      logi 3
+  --help|-h) help;;
+  --date|-d) dzis;;
+  --logs|-l)
+    if [ -z "$3" ]; then
+      logi 100
     else
-      logi "$2"
+      logi "$3"
     fi
     ;;
-
+  *)
+    echo "Nieznana opcja: $1"
+    help
+    ;;
 esac
