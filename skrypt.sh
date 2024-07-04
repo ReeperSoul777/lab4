@@ -9,10 +9,19 @@ function logi(){
     		echo -e "Nazwa pliku: $file_name\nNazwa skryptu: $(basename "$0")\nData utworzenia: $(date '+%Y-%m-%d')" > "$file_name"
  	done
 }
+function help() {
+  echo "Użycie: -- [OPCJE]"
+  echo "Opcje:"
+  echo "  --date			Wyświetla dzisiejszą datę."
+  echo "  --logs			Tworzy 100 plików log."
+  echo "  --logs [liczba]   Tworzy określoną liczbę plików log."
+  echo "  --help			Wyświetla tę pomoc."
+}
 
 
 
 case "$1" in
+--help) help;;
 --date) dzis;;
 --logs)
     if [ -z "$2" ]; then
