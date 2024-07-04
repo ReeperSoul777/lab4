@@ -14,7 +14,7 @@ function help() {
   echo "Opcje:"
   echo "  --date			Wyświetla dzisiejszą datę."
   echo "  --logs			Tworzy 100 plików log."
-  echo "  --logs [liczba]   Tworzy określoną liczbę plików log."
+  echo "  --logs [liczba]   	Tworzy określoną liczbę plików log."
   echo "  --help			Wyświetla tę pomoc."
 }
 
