@@ -3,7 +3,6 @@ function dzis(){
 echo "Dzisiejsza data: $(date '+%Y-%m-%d')"
 }
 function logi(){
-echo $1
   liczba=$1	
 	for i in $(seq 1 $liczba); do
     		file_name="log${i}.txt"
